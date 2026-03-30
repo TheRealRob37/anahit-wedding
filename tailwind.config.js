@@ -4,39 +4,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        burgundy: {
-          950: '#160408',
-          900: '#27070f',
-          800: '#3d0d18',
-          700: '#561324',
-          600: '#6e1930',
+        beige: {
+          50:  '#faf7f2',
+          100: '#f4ede0',
+          200: '#e8dfd0',
+          300: '#d4c8b2',
+          400: '#bfaf94',
         },
-        cream: {
-          50:  '#fdfaf5',
-          100: '#f9f3ea',
-          200: '#f2e8d5',
-          300: '#e8d8bc',
-        },
-        gold: {
-          300: '#dcc9a0',
-          400: '#c9a97a',
-          500: '#b8935a',
-          600: '#9e7a42',
-        },
-        rose: {
-          100: '#f5e4e4',
-          200: '#edc9c9',
+        olive: {
+          600: '#5a5340',
+          700: '#4a4535',
+          800: '#3a3627',
+          900: '#2b281b',
+          950: '#1a1810',
         },
       },
       fontFamily: {
-        serif:  ['Cormorant Garamond', 'Georgia', 'serif'],
-        sc:     ['Cormorant SC', 'Georgia', 'serif'],
-        script: ['Great Vibes', 'cursive'],
-        sans:   ['Jost', 'system-ui', 'sans-serif'],
+        serif:   ['Cormorant Garamond', 'Georgia', 'serif'],
+        display: ['Oswald', 'sans-serif'],
+        script:  ['Great Vibes', 'cursive'],
+        sans:    ['Jost', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
-        widest: '0.25em',
-        ultra:  '0.45em',
+        widest: '0.2em',
+        ultra:  '0.35em',
       },
     },
   },

@@ -18,41 +18,25 @@ const aspectClasses: Record<string, string> = {
 
 export default function Gallery() {
   return (
-    <section className="bg-burgundy-900 px-6 py-28">
-      <div className="max-w-5xl mx-auto">
+    <section className="bg-beige-200 px-4 py-20">
+      <div className="max-w-4xl mx-auto">
 
         <FadeInSection>
-          <div className="text-center mb-16">
-            <h2 className="font-sc text-3xl sm:text-4xl tracking-widest text-cream-100 mb-4">
-              Մեր լուսանկարները
-            </h2>
-            <div className="flex items-center justify-center gap-4">
-              <span className="block h-px w-12 bg-gold-400/50" />
-              <span className="w-1.5 h-1.5 rotate-45 border border-gold-400/60 block" />
-              <span className="block h-px w-12 bg-gold-400/50" />
-            </div>
-          </div>
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-widest uppercase text-olive-800 text-center mb-10">
+            Մեր լուսանկարները
+          </h2>
         </FadeInSection>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {photos.map((photo, i) => (
             <FadeInSection key={photo.id} delay={i * 0.07}>
-              <motion.div
-                className={`overflow-hidden ${aspectClasses[photo.aspect]} relative`}
-                whileHover="hover"
-              >
+              <motion.div className={`overflow-hidden ${aspectClasses[photo.aspect]}`} whileHover="hover">
                 <motion.img
-                  src={photo.src}
-                  alt=""
-                  className="w-full h-full object-cover"
-                  variants={{ hover: { scale: 1.07 } }}
-                  transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+                  src={photo.src} alt=""
+                  className="w-full h-full object-cover grayscale-[20%]"
+                  variants={{ hover: { scale: 1.06, filter: 'grayscale(0%)' } }}
+                  transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
                   loading="lazy"
-                />
-                <motion.div
-                  className="absolute inset-0 border-2 border-gold-400/0"
-                  variants={{ hover: { borderColor: 'rgba(201,169,122,0.35)' } }}
-                  transition={{ duration: 0.5 }}
                 />
               </motion.div>
             </FadeInSection>

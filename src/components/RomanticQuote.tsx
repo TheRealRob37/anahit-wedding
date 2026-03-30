@@ -2,50 +2,34 @@ import FadeInSection from './FadeInSection'
 
 export default function RomanticQuote() {
   return (
-    <section className="bg-burgundy-800 px-8 py-28 relative overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-5"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1490750967868-88df5691166d?w=1400&q=80')" }}
-      />
-      <div className="max-w-3xl mx-auto relative z-10">
+    <section className="bg-beige-100 px-6 py-20">
+      <div className="max-w-lg mx-auto text-center">
 
-        <div className="grid sm:grid-cols-2 gap-12 items-center">
+        <FadeInSection>
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-widest uppercase text-olive-800 leading-tight mb-8">
+            Հարգելի հարազատներ<br />ու բարեկամներ
+          </h2>
+        </FadeInSection>
 
-          <FadeInSection>
-            <div>
-              <p className="font-sc text-xs tracking-ultra text-gold-400/70 mb-5">Հարգելի բոլոր</p>
-              <h2 className="font-script text-5xl sm:text-6xl text-cream-100 mb-6 leading-tight">
-                Հարազատներ & բարեկամներ
-              </h2>
-              <div className="w-12 h-px bg-gold-400 mb-6" />
-              <p className="font-serif text-lg leading-relaxed text-cream-200/75">
-                Մեծ ուրախությամբ հրավիրում ենք ձեզ կիսել մեր ամենակարևոր օրը։
-                Ձեր ներկայությունը մեզ անչափ կուրախացնի, և միասին կստեղծենք
-                անմոռանալի հուշեր՝ ողջ կյանքի համար։
-              </p>
-              <p className="font-serif text-lg leading-relaxed text-cream-200/75 mt-4">
-                Անհամբեր սպասում ենք ձեզ մեր ուրախությունը կիսելու։
-              </p>
-              <div className="mt-8">
-                <p className="font-script text-3xl text-gold-300">Վահան & Անահիտ</p>
-              </div>
-            </div>
-          </FadeInSection>
+        <FadeInSection delay={0.15}>
+          <p className="font-serif text-lg leading-relaxed text-olive-700/80 mb-4">
+            Մեր կյանքում կատարվելու են երջանիկ փոփոխություններ։
+          </p>
+          <p className="font-serif text-lg leading-relaxed text-olive-700/80">
+            Ուզում ենք, որ այդ օրը մեր կողքին լինեն ամենամոտ
+            ու հարազատ մարդիկ։ Ուրախ կլինենք ձեզ հետ կիսել
+            այս հրաշալի տոնը՝ մեր հարսանիքի օրը, որը կկայանա
+          </p>
+        </FadeInSection>
 
-          <FadeInSection delay={0.2}>
-            <div className="relative">
-              <div className="absolute -inset-3 border border-gold-400/25" />
-              <img
-                src="https://images.unsplash.com/photo-1537633468565-c67a4c20bab5?w=600&q=80"
-                alt=""
-                className="w-full aspect-[3/4] object-cover"
-              />
-            </div>
-          </FadeInSection>
+        <FadeInSection delay={0.25}>
+          <p className="font-display text-5xl sm:text-6xl font-light text-olive-900 tracking-widest mt-10 mb-2">
+            25.04.2026
+          </p>
+          <p className="font-serif italic text-olive-600/70 text-base">Երևան, Հայաստան</p>
+        </FadeInSection>
 
-        </div>
       </div>
     </section>
   )
 }
-

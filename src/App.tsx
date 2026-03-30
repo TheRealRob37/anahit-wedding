@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 import Hero from './components/Hero'
 import RomanticQuote from './components/RomanticQuote'
+import Countdown from './components/Countdown'
+import WeddingCalendar from './components/WeddingCalendar'
+import Timeline from './components/Timeline'
 import EventDetails from './components/EventDetails'
 import Gallery from './components/Gallery'
-import Countdown from './components/Countdown'
+import DressCode from './components/DressCode'
 import RSVP from './components/RSVP'
 import Footer from './components/Footer'
 import Admin from './components/Admin'
@@ -20,16 +23,18 @@ function useHash() {
 
 export default function App() {
   const hash = useHash()
-
   if (hash === '#/admin') return <Admin />
 
   return (
     <main>
       <Hero />
       <RomanticQuote />
+      <Countdown />
+      <WeddingCalendar />
+      <Timeline />
       <EventDetails />
       <Gallery />
-      <Countdown />
+      <DressCode />
       <RSVP />
       <Footer />
     </main>

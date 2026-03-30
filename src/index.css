@@ -6,8 +6,8 @@
   html { scroll-behavior: smooth; }
 
   body {
-    background-color: #27070f;
-    color: #f9f3ea;
+    background-color: #f4ede0;
+    color: #3a3627;
     font-family: 'Jost', system-ui, sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
@@ -15,7 +15,7 @@
   }
 
   ::selection {
-    background-color: #561324;
-    color: #f9f3ea;
+    background-color: #4a4535;
+    color: #f4ede0;
   }
 }
