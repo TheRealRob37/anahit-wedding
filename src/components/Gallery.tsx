@@ -18,12 +18,12 @@ const aspectClasses: Record<string, string> = {
 
 export default function Gallery() {
   return (
-    <section className="bg-cream-50 px-6 py-28">
+    <section className="bg-burgundy-900 px-6 py-28">
       <div className="max-w-5xl mx-auto">
 
         <FadeInSection>
           <div className="text-center mb-16">
-            <h2 className="font-sc text-3xl sm:text-4xl tracking-widest text-burgundy-800 mb-4">
+            <h2 className="font-sc text-3xl sm:text-4xl tracking-widest text-cream-100 mb-4">
               Մեր լուսանկարները
             </h2>
             <div className="flex items-center justify-center gap-4">

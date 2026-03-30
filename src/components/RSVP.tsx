@@ -34,12 +34,16 @@ export default function RSVP() {
   }
 
   return (
-    <section className="bg-cream-100 px-8 py-28">
-      <div className="max-w-lg mx-auto">
+    <section className="bg-burgundy-950 px-8 py-28 relative overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-[0.07]"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1490750967868-88df5691166d?w=1400&q=80')" }}
+      />
+      <div className="max-w-lg mx-auto relative z-10">
 
         <FadeInSection>
           <div className="text-center mb-14">
-            <h2 className="font-sc text-3xl sm:text-4xl tracking-widest text-burgundy-800 mb-4">
+            <h2 className="font-sc text-3xl sm:text-4xl tracking-widest text-cream-100 mb-4">
               Հաստատեք ներկայությունը
             </h2>
             <div className="flex items-center justify-center gap-4">
@@ -56,38 +60,38 @@ export default function RSVP() {
               key="success"
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
-              className="text-center py-16 border border-gold-400/25 bg-cream-50"
+              className="text-center py-16 border border-gold-400/20 bg-burgundy-900/60"
             >
               <div className="w-12 h-12 border border-gold-500 flex items-center justify-center mx-auto mb-6">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b8935a" strokeWidth="1.2">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <p className="font-script text-4xl text-burgundy-700 mb-3">Շնորհակալություն</p>
-              <p className="font-sc text-xs tracking-widest text-gold-500">Ձեր պատասխանը ստացվել է</p>
+              <p className="font-script text-4xl text-cream-100 mb-3">Շնորհակալություն</p>
+              <p className="font-sc text-xs tracking-widest text-gold-400">Ձեր պատասխանը ստացվել է</p>
             </motion.div>
           ) : (
             <motion.form key="form" onSubmit={handleSubmit} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-7">
 
               <FadeInSection delay={0.1}>
                 <div className="flex flex-col gap-2">
-                  <label className="font-sc text-xs tracking-widest text-burgundy-700/60">Ձեր անունը</label>
+                  <label className="font-sc text-xs tracking-widest text-gold-400/70">Ձեր անունը</label>
                   <input type="text" name="name" value={form.name} onChange={handleChange} required placeholder="Անուն Ազգանուն"
-                    className="bg-transparent border-b border-gold-400/40 py-3 font-serif text-burgundy-900 text-lg placeholder:text-burgundy-800/20 focus:outline-none focus:border-burgundy-700 transition-colors duration-400" />
+                    className="bg-transparent border-b border-gold-400/40 py-3 font-serif text-cream-100 text-lg placeholder:text-cream-200/20 focus:outline-none focus:border-gold-400 transition-colors duration-400" />
                 </div>
               </FadeInSection>
 
               <FadeInSection delay={0.15}>
                 <div className="flex flex-col gap-3">
-                  <label className="font-sc text-xs tracking-widest text-burgundy-700/60">Ներկայություն</label>
+                  <label className="font-sc text-xs tracking-widest text-gold-400/70">Ներկայություն</label>
                   <div className="flex gap-8 py-1">
                     {[{ value: 'yes', label: 'Կգամ' }, { value: 'no', label: 'Չեմ կարող' }].map(opt => (
                       <label key={opt.value} className="flex items-center gap-3 cursor-pointer">
-                        <span className={`w-4 h-4 border flex items-center justify-center transition-colors duration-300 ${form.attendance === opt.value ? 'border-burgundy-700' : 'border-gold-400/40'}`}>
-                          {form.attendance === opt.value && <span className="w-2 h-2 bg-burgundy-700 block" />}
+                        <span className={`w-4 h-4 border flex items-center justify-center transition-colors duration-300 ${form.attendance === opt.value ? 'border-gold-400' : 'border-gold-400/30'}`}>
+                          {form.attendance === opt.value && <span className="w-2 h-2 bg-gold-400 block" />}
                         </span>
                         <input type="radio" name="attendance" value={opt.value} checked={form.attendance === opt.value} onChange={handleChange} className="sr-only" />
-                        <span className="font-serif text-burgundy-800 font-light">{opt.label}</span>
+                        <span className="font-serif text-cream-200 font-light">{opt.label}</span>
                       </label>
                     ))}
                   </div>
@@ -96,17 +100,17 @@ export default function RSVP() {
 
               <FadeInSection delay={0.2}>
                 <div className="flex flex-col gap-2">
-                  <label className="font-sc text-xs tracking-widest text-burgundy-700/60">Հյուրերի քանակ</label>
+                  <label className="font-sc text-xs tracking-widest text-gold-400/70">Հյուրերի քանակ</label>
                   <input type="number" name="guests" value={form.guests} onChange={handleChange} min="1" max="10"
-                    className="bg-transparent border-b border-gold-400/40 py-3 font-serif text-burgundy-900 text-lg focus:outline-none focus:border-burgundy-700 transition-colors duration-400 w-20" />
+                    className="bg-transparent border-b border-gold-400/40 py-3 font-serif text-cream-100 text-lg focus:outline-none focus:border-gold-400 transition-colors duration-400 w-20" />
                 </div>
               </FadeInSection>
 
               <FadeInSection delay={0.25}>
                 <div className="flex flex-col gap-2">
-                  <label className="font-sc text-xs tracking-widest text-burgundy-700/60">Ուղերձ</label>
+                  <label className="font-sc text-xs tracking-widest text-gold-400/70">Ուղերձ</label>
                   <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Ձեր ուղերձը..."
-                    className="bg-transparent border-b border-gold-400/40 py-3 font-serif text-burgundy-900 text-lg placeholder:text-burgundy-800/20 focus:outline-none focus:border-burgundy-700 transition-colors duration-400 resize-none" />
+                    className="bg-transparent border-b border-gold-400/40 py-3 font-serif text-cream-100 text-lg placeholder:text-cream-200/20 focus:outline-none focus:border-gold-400 transition-colors duration-300 resize-none" />
                 </div>
               </FadeInSection>
 
