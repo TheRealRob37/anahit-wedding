@@ -12,12 +12,7 @@ interface FormData {
 export default function RSVP() {
   const token = new URLSearchParams(window.location.search).get('token') ?? ''
 
-  const [form, setForm] = useState<FormData>({
-    name: '',
-    guests: '1',
-    attendance: 'yes',
-    message: '',
-  })
+  const [form, setForm] = useState<FormData>({ name: '', guests: '1', attendance: 'yes', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -26,9 +21,7 @@ export default function RSVP() {
     if (!token) return
     fetch(`/api/invite/${token}`)
       .then(r => r.json())
-      .then(data => {
-        if (data.name) setForm(prev => ({ ...prev, name: data.name }))
-      })
+      .then(data => { if (data.name) setForm(prev => ({ ...prev, name: data.name })) })
       .catch(() => {})
   }, [token])
 
@@ -44,15 +37,9 @@ export default function RSVP() {
       const res = await fetch('/api/rsvp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          token,
-          name: form.name,
-          attendance: form.attendance,
-          guests: Number(form.guests),
-          message: form.message,
-        }),
+        body: JSON.stringify({ token, name: form.name, attendance: form.attendance, guests: Number(form.guests), message: form.message }),
       })
-      if (!res.ok) throw new Error('Սխալ է տեղի ունեցել')
+      if (!res.ok) throw new Error()
       setSubmitted(true)
     } catch {
       setError('Ցավոք, ինչ-որ բան սխալ գնաց։ Խնդրում ենք կրկին փորձել։')
@@ -62,16 +49,19 @@ export default function RSVP() {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-cream-200 px-6 py-32">
+    <section className="min-h-screen flex items-center justify-center bg-ivory-100 px-8 py-32">
       <div className="max-w-md mx-auto w-full">
+
         <FadeInSection>
-          <p className="font-sans text-xs tracking-ultra uppercase text-gold-500 text-center mb-4">
-            Հրավեր
-          </p>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <span className="block h-px w-16 bg-brass-500/40" />
+            <span className="font-sc text-xs tracking-ultra text-brass-500">Հրավեր</span>
+            <span className="block h-px w-16 bg-brass-500/40" />
+          </div>
         </FadeInSection>
 
         <FadeInSection delay={0.1}>
-          <h2 className="font-serif text-3xl sm:text-4xl font-light text-charcoal-800 text-center mb-14">
+          <h2 className="font-serif text-3xl sm:text-4xl font-light text-navy-900 text-center mb-14">
             Հաստատե՛ք ձեր ներկայությունը
           </h2>
         </FadeInSection>
@@ -83,16 +73,16 @@ export default function RSVP() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-center py-16"
+              transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+              className="text-center py-16 border border-brass-400/20"
             >
-              <div className="w-12 h-12 border border-gold-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b8975f" strokeWidth="1.5">
+              <div className="w-10 h-10 border border-brass-400 flex items-center justify-center mx-auto mb-7">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#876e4e" strokeWidth="1.2">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <p className="font-serif text-2xl italic text-charcoal-800 mb-3">Շնորհակալություն</p>
-              <p className="font-sans text-sm text-charcoal-600 font-light">Ձեր պատասխանը ստացվել է</p>
+              <p className="font-serif text-2xl italic text-navy-900 mb-3">Շնորհակալություն</p>
+              <p className="font-sc text-xs tracking-widest text-brass-500">Ձեր պատասխանը ստացվել է</p>
             </motion.div>
           ) : (
             <motion.form
@@ -101,50 +91,30 @@ export default function RSVP() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex flex-col gap-6"
+              className="flex flex-col gap-8"
             >
               <FadeInSection delay={0.2}>
                 <div className="flex flex-col gap-2">
-                  <label className="font-sans text-xs tracking-widest uppercase text-gold-500">
-                    Ձեր անունը
-                  </label>
+                  <label className="font-sc text-xs tracking-widest text-brass-500">Ձեր անունը</label>
                   <input
-                    type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
+                    type="text" name="name" value={form.name} onChange={handleChange} required
                     placeholder="Անուն Ազգանուն"
-                    className="bg-transparent border-b border-gold-300 py-3 font-serif text-charcoal-800 text-lg placeholder:text-charcoal-600/30 focus:outline-none focus:border-gold-500 transition-colors duration-300"
+                    className="bg-transparent border-b border-brass-500/30 py-3 font-serif text-navy-900 text-lg placeholder:text-navy-800/25 focus:outline-none focus:border-brass-500 transition-colors duration-500"
                   />
                 </div>
               </FadeInSection>
 
               <FadeInSection delay={0.25}>
-                <div className="flex flex-col gap-2">
-                  <label className="font-sans text-xs tracking-widest uppercase text-gold-500">
-                    Ներկայություն
-                  </label>
-                  <div className="flex gap-6 py-3">
-                    {[
-                      { value: 'yes', label: 'Կգամ' },
-                      { value: 'no', label: 'Չեմ կարող' },
-                    ].map(opt => (
-                      <label key={opt.value} className="flex items-center gap-3 cursor-pointer group">
-                        <span className={`w-4 h-4 border rounded-full flex items-center justify-center transition-colors duration-300 ${form.attendance === opt.value ? 'border-gold-500' : 'border-gold-300'}`}>
-                          {form.attendance === opt.value && (
-                            <span className="w-2 h-2 rounded-full bg-gold-500 block" />
-                          )}
+                <div className="flex flex-col gap-3">
+                  <label className="font-sc text-xs tracking-widest text-brass-500">Ներկայություն</label>
+                  <div className="flex gap-8 py-1">
+                    {[{ value: 'yes', label: 'Կգամ' }, { value: 'no', label: 'Չեմ կարող' }].map(opt => (
+                      <label key={opt.value} className="flex items-center gap-3 cursor-pointer">
+                        <span className={`w-4 h-4 border flex items-center justify-center transition-colors duration-400 ${form.attendance === opt.value ? 'border-brass-500' : 'border-brass-400/30'}`}>
+                          {form.attendance === opt.value && <span className="w-1.5 h-1.5 bg-brass-500 block" />}
                         </span>
-                        <input
-                          type="radio"
-                          name="attendance"
-                          value={opt.value}
-                          checked={form.attendance === opt.value}
-                          onChange={handleChange}
-                          className="sr-only"
-                        />
-                        <span className="font-serif text-charcoal-700 font-light">{opt.label}</span>
+                        <input type="radio" name="attendance" value={opt.value} checked={form.attendance === opt.value} onChange={handleChange} className="sr-only" />
+                        <span className="font-serif text-navy-800 font-light">{opt.label}</span>
                       </label>
                     ))}
                   </div>
@@ -153,49 +123,36 @@ export default function RSVP() {
 
               <FadeInSection delay={0.3}>
                 <div className="flex flex-col gap-2">
-                  <label className="font-sans text-xs tracking-widest uppercase text-gold-500">
-                    Հյուրերի քանակ
-                  </label>
+                  <label className="font-sc text-xs tracking-widest text-brass-500">Հյուրերի քանակ</label>
                   <input
-                    type="number"
-                    name="guests"
-                    value={form.guests}
-                    onChange={handleChange}
-                    min="1"
-                    max="10"
-                    className="bg-transparent border-b border-gold-300 py-3 font-serif text-charcoal-800 text-lg focus:outline-none focus:border-gold-500 transition-colors duration-300 w-20"
+                    type="number" name="guests" value={form.guests} onChange={handleChange} min="1" max="10"
+                    className="bg-transparent border-b border-brass-500/30 py-3 font-serif text-navy-900 text-lg focus:outline-none focus:border-brass-500 transition-colors duration-500 w-20"
                   />
                 </div>
               </FadeInSection>
 
               <FadeInSection delay={0.35}>
                 <div className="flex flex-col gap-2">
-                  <label className="font-sans text-xs tracking-widest uppercase text-gold-500">
-                    Ուղերձ 
-                  </label>
+                  <label className="font-sc text-xs tracking-widest text-brass-500">Ուղերձ</label>
                   <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    rows={3}
+                    name="message" value={form.message} onChange={handleChange} rows={3}
                     placeholder="Ձեր ուղերձը..."
-                    className="bg-transparent border-b border-gold-300 py-3 font-serif text-charcoal-800 text-lg placeholder:text-charcoal-600/30 focus:outline-none focus:border-gold-500 transition-colors duration-300 resize-none"
+                    className="bg-transparent border-b border-brass-500/30 py-3 font-serif text-navy-900 text-lg placeholder:text-navy-800/25 focus:outline-none focus:border-brass-500 transition-colors duration-500 resize-none"
                   />
                 </div>
               </FadeInSection>
 
-              {error && (
-                <p className="font-sans text-xs text-red-400 text-center">{error}</p>
-              )}
+              {error && <p className="font-sc text-xs text-red-600/70 text-center">{error}</p>}
 
               <FadeInSection delay={0.45}>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="mt-4 font-sans text-xs tracking-widest uppercase text-charcoal-700 border border-gold-300 px-10 py-4 hover:bg-gold-400 hover:text-cream-50 hover:border-gold-400 transition-all duration-500 ease-out self-center disabled:opacity-40"
-                >
-                  {loading ? '...' : 'Հաստատել'}
-                </button>
+                <div className="text-center mt-2">
+                  <button
+                    type="submit" disabled={loading}
+                    className="font-sc text-xs tracking-widest text-navy-800 border border-brass-500/40 px-12 py-4 hover:bg-navy-900 hover:text-ivory-100 hover:border-navy-900 transition-all duration-700 ease-out disabled:opacity-40"
+                  >
+                    {loading ? '·  ·  ·' : 'Հաստատել'}
+                  </button>
+                </div>
               </FadeInSection>
             </motion.form>
           )}

@@ -8,8 +8,8 @@
   }
 
   body {
-    background-color: #fdfcf8;
-    color: #3a332c;
+    background-color: #0d1c2e;
+    color: #f5f0e6;
     font-family: 'Jost', system-ui, sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
@@ -17,13 +17,7 @@
   }
 
   ::selection {
-    background-color: #d4b896;
-    color: #fdfcf8;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+    background-color: #876e4e;
+    color: #f5f0e6;
   }
 }
