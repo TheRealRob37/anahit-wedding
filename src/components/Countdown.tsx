@@ -1,71 +1,61 @@
 import { useState, useEffect } from 'react'
 import FadeInSection from './FadeInSection'
 
-interface TimeLeft {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
-}
+interface TimeLeft { days: number; hours: number; minutes: number; seconds: number }
 
 function getTimeLeft(): TimeLeft {
-  const target = new Date('2026-04-25T17:00:00')
-  const now = new Date()
-  const diff = Math.max(0, target.getTime() - now.getTime())
+  const diff = Math.max(0, new Date('2026-04-25T17:00:00').getTime() - Date.now())
   return {
-    days:    Math.floor(diff / (1000 * 60 * 60 * 24)),
-    hours:   Math.floor((diff / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((diff / (1000 * 60)) % 60),
+    days:    Math.floor(diff / 86400000),
+    hours:   Math.floor((diff / 3600000) % 24),
+    minutes: Math.floor((diff / 60000) % 60),
     seconds: Math.floor((diff / 1000) % 60),
   }
 }
 
-function pad(n: number) { return String(n).padStart(2, '0') }
-
-const labels: Record<keyof TimeLeft, string> = {
-  days: 'Օր', hours: 'Ժամ', minutes: 'Րոպե', seconds: 'Վայրկ',
-}
+const labels: Record<keyof TimeLeft, string> = { days: 'Օր', hours: 'Ժամ', minutes: 'Րոպե', seconds: 'Վայրկ' }
 
 export default function Countdown() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(getTimeLeft())
-  useEffect(() => {
-    const id = setInterval(() => setTimeLeft(getTimeLeft()), 1000)
-    return () => clearInterval(id)
-  }, [])
+  const [t, setT] = useState<TimeLeft>(getTimeLeft())
+  useEffect(() => { const id = setInterval(() => setT(getTimeLeft()), 1000); return () => clearInterval(id) }, [])
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-navy-950 px-8 py-32">
-      <div className="max-w-3xl mx-auto w-full text-center">
+    <section className="bg-burgundy-950 px-8 py-28 relative overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-8"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1490750967868-88df5691166d?w=1400&q=80')" }}
+      />
+
+      <div className="max-w-3xl mx-auto text-center relative z-10">
 
         <FadeInSection>
-          <div className="flex items-center justify-center gap-4 mb-20">
-            <span className="block h-px w-16 bg-brass-600/40" />
-            <span className="font-sc text-xs tracking-ultra text-brass-400">Մինչ հարսանիքը</span>
-            <span className="block h-px w-16 bg-brass-600/40" />
+          <h2 className="font-sc text-3xl sm:text-4xl tracking-widest text-cream-100 mb-4">
+            Հետհաշվարկ
+          </h2>
+          <div className="flex items-center justify-center gap-4 mb-16">
+            <span className="block h-px w-12 bg-gold-500/40" />
+            <span className="w-1.5 h-1.5 rotate-45 border border-gold-500/50 block" />
+            <span className="block h-px w-12 bg-gold-500/40" />
           </div>
         </FadeInSection>
 
-        <div className="grid grid-cols-4 gap-3 sm:gap-8">
-          {(Object.keys(timeLeft) as (keyof TimeLeft)[]).map((unit, i) => (
+        <div className="grid grid-cols-4 gap-3 sm:gap-6">
+          {(Object.keys(t) as (keyof TimeLeft)[]).map((unit, i) => (
             <FadeInSection key={unit} delay={i * 0.1}>
-              <div className="flex flex-col items-center gap-4">
-                <div className="border border-brass-600/25 px-2 py-4 sm:px-6 sm:py-7 w-full">
-                  <span className="font-serif text-3xl sm:text-5xl font-light text-ivory-100 tabular-nums block">
-                    {pad(timeLeft[unit])}
+              <div className="flex flex-col items-center gap-3">
+                <div className="border border-gold-500/25 w-full py-5 sm:py-7 bg-burgundy-900/50">
+                  <span className="font-serif text-3xl sm:text-5xl font-light text-cream-100 tabular-nums">
+                    {String(t[unit]).padStart(2, '0')}
                   </span>
                 </div>
-                <span className="font-sc text-xs tracking-widest text-brass-500">
-                  {labels[unit]}
-                </span>
+                <span className="font-sc text-xs tracking-widest text-gold-500/70">{labels[unit]}</span>
               </div>
             </FadeInSection>
           ))}
         </div>
 
         <FadeInSection delay={0.5}>
-          <p className="font-serif italic text-ivory-300/50 text-lg mt-16">
-            25 Ապրիլ 2026
-          </p>
+          <p className="font-script text-3xl text-gold-400/60 mt-14">25 Ապրիլ 2026</p>
         </FadeInSection>
 
       </div>

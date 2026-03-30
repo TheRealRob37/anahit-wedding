@@ -11,39 +11,48 @@ const photos = [
 ]
 
 const aspectClasses: Record<string, string> = {
-  portrait: 'aspect-[3/4]',
+  portrait:  'aspect-[3/4]',
   landscape: 'aspect-[4/3]',
-  square: 'aspect-square',
+  square:    'aspect-square',
 }
 
 export default function Gallery() {
   return (
-    <section className="min-h-screen bg-ivory-50 px-6 py-32">
+    <section className="bg-cream-50 px-6 py-28">
       <div className="max-w-5xl mx-auto">
 
         <FadeInSection>
-          <div className="flex items-center justify-center gap-4 mb-20">
-            <span className="block h-px w-16 bg-brass-500/40" />
-            <span className="font-sc text-xs tracking-ultra text-brass-500">Մեր լուսանկարները</span>
-            <span className="block h-px w-16 bg-brass-500/40" />
+          <div className="text-center mb-16">
+            <h2 className="font-sc text-3xl sm:text-4xl tracking-widest text-burgundy-800 mb-4">
+              Մեր լուսանկարները
+            </h2>
+            <div className="flex items-center justify-center gap-4">
+              <span className="block h-px w-12 bg-gold-400/50" />
+              <span className="w-1.5 h-1.5 rotate-45 border border-gold-400/60 block" />
+              <span className="block h-px w-12 bg-gold-400/50" />
+            </div>
           </div>
         </FadeInSection>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {photos.map((photo, i) => (
             <FadeInSection key={photo.id} delay={i * 0.07}>
               <motion.div
-                className={`overflow-hidden bg-ivory-300 ${aspectClasses[photo.aspect]}`}
-                whileHover={{ scale: 1.015 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                className={`overflow-hidden ${aspectClasses[photo.aspect]} relative`}
+                whileHover="hover"
               >
                 <motion.img
                   src={photo.src}
                   alt=""
-                  className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="w-full h-full object-cover"
+                  variants={{ hover: { scale: 1.07 } }}
+                  transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
                   loading="lazy"
+                />
+                <motion.div
+                  className="absolute inset-0 border-2 border-gold-400/0"
+                  variants={{ hover: { borderColor: 'rgba(201,169,122,0.35)' } }}
+                  transition={{ duration: 0.5 }}
                 />
               </motion.div>
             </FadeInSection>

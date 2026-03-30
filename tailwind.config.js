@@ -1,46 +1,38 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: '#08131f',
-          900: '#0d1c2e',
-          800: '#12263d',
-          700: '#1a334f',
-          600: '#254461',
+        burgundy: {
+          950: '#160408',
+          900: '#27070f',
+          800: '#3d0d18',
+          700: '#561324',
+          600: '#6e1930',
         },
-        ivory: {
-          50:  '#faf8f3',
-          100: '#f5f0e6',
-          200: '#ede5d2',
-          300: '#e0d5bb',
-          400: '#cec09e',
+        cream: {
+          50:  '#fdfaf5',
+          100: '#f9f3ea',
+          200: '#f2e8d5',
+          300: '#e8d8bc',
         },
-        brass: {
-          300: '#b09a7a',
-          400: '#9c8464',
-          500: '#876e4e',
-          600: '#72593d',
+        gold: {
+          300: '#dcc9a0',
+          400: '#c9a97a',
+          500: '#b8935a',
+          600: '#9e7a42',
         },
-        forest: {
-          900: '#0e1f16',
-          800: '#162a1e',
-          700: '#1e3828',
-        },
-        wine: {
-          900: '#28090f',
-          800: '#3d1018',
+        rose: {
+          100: '#f5e4e4',
+          200: '#edc9c9',
         },
       },
       fontFamily: {
-        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-        sc:    ['Cormorant SC', 'Georgia', 'serif'],
-        sans:  ['Jost', 'system-ui', 'sans-serif'],
+        serif:  ['Cormorant Garamond', 'Georgia', 'serif'],
+        sc:     ['Cormorant SC', 'Georgia', 'serif'],
+        script: ['Great Vibes', 'cursive'],
+        sans:   ['Jost', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         widest: '0.25em',

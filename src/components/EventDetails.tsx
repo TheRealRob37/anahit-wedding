@@ -2,62 +2,69 @@ import FadeInSection from './FadeInSection'
 
 export default function EventDetails() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-navy-900 px-8 py-32">
-      <div className="max-w-3xl mx-auto w-full">
+    <section className="bg-burgundy-900 px-8 py-28 relative overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-10"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1490750967868-88df5691166d?w=1400&q=80')" }}
+      />
+
+      <div className="max-w-4xl mx-auto relative z-10">
 
         <FadeInSection>
-          <div className="flex items-center justify-center gap-4 mb-20">
-            <span className="block h-px w-16 bg-brass-600/40" />
-            <span className="font-sc text-xs tracking-ultra text-brass-400">Մանրամասներ</span>
-            <span className="block h-px w-16 bg-brass-600/40" />
-          </div>
+          <h2 className="font-sc text-3xl sm:text-4xl tracking-widest text-cream-100 text-center mb-16">
+            Արարողություն
+          </h2>
         </FadeInSection>
 
-        <div className="grid sm:grid-cols-3 gap-16 sm:gap-8 text-center">
+        <div className="grid sm:grid-cols-2 gap-8 mb-16">
 
           <FadeInSection delay={0.1}>
-            <div className="flex flex-col items-center gap-5">
-              <div className="w-px h-12 bg-brass-600/30" />
-              <span className="font-sc text-xs tracking-widest text-brass-400">Ամսաթիվ</span>
-              <p className="font-serif text-3xl font-light text-ivory-100 leading-tight">25 Ապրիլ</p>
-              <p className="font-serif italic text-lg text-ivory-300/60">2026</p>
+            <div className="border border-gold-500/20 p-8 bg-burgundy-950/40">
+              <p className="font-sc text-xs tracking-ultra text-gold-400 mb-5">Կապ</p>
+              <p className="font-serif text-cream-100 text-xl font-light mb-2">Հարսանեկան Սրահ</p>
+              <p className="font-serif italic text-cream-200/60 mb-6">Երևան, Հայաստան</p>
+              <a
+                href="https://yandex.com/maps/org/1709327076/?ll=45.587915%2C40.145389&z=11.21"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block font-sc text-xs tracking-widest text-burgundy-950 bg-gold-400 px-7 py-3 hover:bg-gold-300 transition-colors duration-400"
+              >
+                Տեսնել քարտեզում
+              </a>
             </div>
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
-            <div className="flex flex-col items-center gap-5">
-              <div className="w-px h-12 bg-brass-600/30" />
-              <span className="font-sc text-xs tracking-widest text-brass-400">Ժամը</span>
-              <p className="font-serif text-3xl font-light text-ivory-100 leading-tight">17:00</p>
-              <p className="font-serif italic text-lg text-ivory-300/60">Ռեստորան</p>
-            </div>
-          </FadeInSection>
-
-          <FadeInSection delay={0.3}>
-            <div className="flex flex-col items-center gap-5">
-              <div className="w-px h-12 bg-brass-600/30" />
-              <span className="font-sc text-xs tracking-widest text-brass-400">Վայրը</span>
-              <p className="font-serif text-3xl font-light text-ivory-100 leading-tight">Երևան</p>
-              <p className="font-serif italic text-lg text-ivory-300/60">Հայաստան</p>
+            <div className="border border-gold-500/20 p-8 bg-burgundy-950/40">
+              <p className="font-sc text-xs tracking-ultra text-gold-400 mb-5">Ընդունելություն</p>
+              <p className="font-serif text-cream-100 text-xl font-light mb-2">Ռեստորան</p>
+              <p className="font-serif italic text-cream-200/60 mb-6">Երևան, Հայաստան</p>
+              <a
+                href="https://yandex.com/maps/org/1709327076/?ll=45.587915%2C40.145389&z=11.21"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block font-sc text-xs tracking-widest text-burgundy-950 bg-gold-400 px-7 py-3 hover:bg-gold-300 transition-colors duration-400"
+              >
+                Տեսնել քարտեզում
+              </a>
             </div>
           </FadeInSection>
 
         </div>
 
-        <FadeInSection delay={0.45}>
-          <div className="mt-24 text-center">
-            <a
-              href="https://yandex.com/maps/org/1709327076/?ll=45.587915%2C40.145389&z=11.21"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 font-sc text-xs tracking-widest text-ivory-300/70 border border-brass-600/40 px-10 py-4 hover:border-brass-400 hover:text-ivory-100 transition-all duration-700 ease-out"
-            >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                <circle cx="12" cy="9" r="2.5"/>
-              </svg>
-              Բացել Yandex Maps-ում
-            </a>
+        <FadeInSection delay={0.3}>
+          <div className="grid grid-cols-3 gap-6 border-t border-gold-500/15 pt-12 text-center">
+            {[
+              { label: 'Ամսաթիվ', value: '25 Ապրիլ', sub: '2026' },
+              { label: 'Ժամը',    value: '17:00',    sub: 'Երեկոյան' },
+              { label: 'Վայրը',   value: 'Երևան',    sub: 'Հայաստան' },
+            ].map(item => (
+              <div key={item.label} className="flex flex-col gap-2">
+                <span className="font-sc text-xs tracking-widest text-gold-500/70">{item.label}</span>
+                <p className="font-serif text-2xl sm:text-3xl font-light text-cream-100">{item.value}</p>
+                <p className="font-serif italic text-cream-200/50 text-sm">{item.sub}</p>
+              </div>
+            ))}
           </div>
         </FadeInSection>
 

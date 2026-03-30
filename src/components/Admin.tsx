@@ -116,9 +116,9 @@ export default function Admin() {
 
   if (!authed) {
     return (
-      <div className="min-h-screen bg-navy-950 flex items-center justify-center px-6">
+      <div className="min-h-screen bg-burgundy-950 flex items-center justify-center px-6">
         <div className="max-w-sm w-full">
-          <p className="font-sc text-xs tracking-ultra text-brass-400 text-center mb-8">
+          <p className="font-sc text-xs tracking-ultra text-gold-400 text-center mb-8">
             Ադմինիստրատոր
           </p>
           <div className="flex flex-col gap-4">
@@ -128,12 +128,12 @@ export default function Admin() {
               value={pwInput}
               onChange={e => setPwInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && login()}
-              className="bg-transparent border-b border-brass-600 py-3 font-serif text-ivory-100 text-lg placeholder:text-ivory-200/20 focus:outline-none focus:border-brass-400 transition-colors duration-300"
+              className="bg-transparent border-b border-gold-400 py-3 font-serif text-cream-100 text-lg placeholder:text-cream-200/20 focus:outline-none focus:border-gold-400 transition-colors duration-300"
             />
             {err && <p className="font-sc text-xs text-red-400">{err}</p>}
             <button
               onClick={login}
-              className="font-sc text-xs tracking-widest text-ivory-200 border border-brass-600 px-8 py-4 hover:bg-brass-600 hover:text-ivory-100 transition-all duration-500"
+              className="font-sc text-xs tracking-widest text-cream-200 border border-gold-400 px-8 py-4 hover:bg-burgundy-700 hover:text-cream-50 transition-all duration-500"
             >
               Մուտք
             </button>
@@ -144,16 +144,16 @@ export default function Admin() {
   }
 
   return (
-    <div className="min-h-screen bg-navy-950 px-4 sm:px-8 py-12">
+    <div className="min-h-screen bg-burgundy-950 px-4 sm:px-8 py-12">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-12">
           <div>
-            <p className="font-sc text-xs tracking-ultra text-brass-400 mb-1">Ադմինիստրատոր</p>
-            <h1 className="font-serif text-3xl font-light text-ivory-100">Վահան & Անահիտ</h1>
+            <p className="font-sc text-xs tracking-ultra text-gold-400 mb-1">Ադմինիստրատոր</p>
+            <h1 className="font-serif text-3xl font-light text-cream-100">Վահան & Անահիտ</h1>
           </div>
           <a
             href="/"
-            className="font-sc text-xs tracking-widest text-brass-400 hover:text-brass-300 transition-colors"
+            className="font-sc text-xs tracking-widest text-gold-400 hover:text-gold-300 transition-colors"
           >
             ← Կայք
           </a>
@@ -167,9 +167,9 @@ export default function Admin() {
               { label: 'Չեն կարող', value: summary.declined },
               { label: 'Ընդամենը հյուր', value: summary.totalGuests },
             ].map(s => (
-              <div key={s.label} className="border border-brass-600/40 p-5 text-center">
-                <p className="font-serif text-4xl font-light text-ivory-100">{s.value}</p>
-                <p className="font-sc text-xs tracking-widest text-brass-400 mt-1">{s.label}</p>
+              <div key={s.label} className="border border-gold-400/40 p-5 text-center">
+                <p className="font-serif text-4xl font-light text-cream-100">{s.value}</p>
+                <p className="font-sc text-xs tracking-widest text-gold-400 mt-1">{s.label}</p>
               </div>
             ))}
           </div>
@@ -182,19 +182,19 @@ export default function Admin() {
             value={newName}
             onChange={e => setNewName(e.target.value)}
             required
-            className="flex-1 min-w-40 bg-transparent border-b border-brass-600 py-3 font-serif text-ivory-100 placeholder:text-ivory-200/20 focus:outline-none focus:border-brass-400 transition-colors duration-300"
+            className="flex-1 min-w-40 bg-transparent border-b border-gold-400 py-3 font-serif text-cream-100 placeholder:text-cream-200/20 focus:outline-none focus:border-gold-400 transition-colors duration-300"
           />
           <input
             type="email"
             placeholder="Էլ. հասցե (կամընտիր)"
             value={newEmail}
             onChange={e => setNewEmail(e.target.value)}
-            className="flex-1 min-w-48 bg-transparent border-b border-brass-600 py-3 font-serif text-ivory-100 placeholder:text-ivory-200/20 focus:outline-none focus:border-brass-400 transition-colors duration-300"
+            className="flex-1 min-w-48 bg-transparent border-b border-gold-400 py-3 font-serif text-cream-100 placeholder:text-cream-200/20 focus:outline-none focus:border-gold-400 transition-colors duration-300"
           />
           <button
             type="submit"
             disabled={adding}
-            className="font-sc text-xs tracking-widest text-ivory-200 border border-brass-600 px-6 py-3 hover:bg-brass-600 hover:text-ivory-100 transition-all duration-500 disabled:opacity-40"
+            className="font-sc text-xs tracking-widest text-cream-200 border border-gold-400 px-6 py-3 hover:bg-burgundy-700 hover:text-cream-50 transition-all duration-500 disabled:opacity-40"
           >
             {adding ? '...' : '+ Ավելացնել'}
           </button>
@@ -203,9 +203,9 @@ export default function Admin() {
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-brass-600/30">
+              <tr className="border-b border-gold-400/25">
                 {['Անուն', 'Էլ. հասցե', 'Ներկայություն', 'Հյուր', 'Ուղերձ', 'Ամսաթիվ', ''].map(h => (
-                  <th key={h} className="font-sc text-xs tracking-widest text-brass-400 pb-3 pr-4 font-normal whitespace-nowrap">
+                  <th key={h} className="font-sc text-xs tracking-widest text-gold-400 pb-3 pr-4 font-normal whitespace-nowrap">
                     {h}
                   </th>
                 ))}
@@ -213,9 +213,9 @@ export default function Admin() {
             </thead>
             <tbody>
               {guests.map(g => (
-                <tr key={g.id} className="border-b border-brass-600/20 hover:bg-navy-800/30 transition-colors">
-                  <td className="py-4 pr-4 font-serif text-ivory-100 whitespace-nowrap">{g.name}</td>
-                  <td className="py-4 pr-4 font-sc text-xs text-ivory-300">{g.email || '—'}</td>
+                <tr key={g.id} className="border-b border-gold-400/20 hover:bg-burgundy-800/30 transition-colors">
+                  <td className="py-4 pr-4 font-serif text-cream-100 whitespace-nowrap">{g.name}</td>
+                  <td className="py-4 pr-4 font-sc text-xs text-cream-200">{g.email || '—'}</td>
                   <td className="py-4 pr-4">
                     {g.attendance === 'yes' && (
                       <span className="font-sc text-xs tracking-widest text-emerald-600">Կգա</span>
@@ -224,12 +224,12 @@ export default function Admin() {
                       <span className="font-sc text-xs tracking-widest text-red-400">Չի կարող</span>
                     )}
                     {g.attendance === null && (
-                      <span className="font-sc text-xs tracking-widest text-ivory-200/20">Չի պատասխանել</span>
+                      <span className="font-sc text-xs tracking-widest text-cream-200/20">Չի պատասխանել</span>
                     )}
                   </td>
-                  <td className="py-4 pr-4 font-serif text-ivory-100">{g.rsvp_guests ?? '—'}</td>
-                  <td className="py-4 pr-4 font-sc text-xs text-ivory-300 max-w-[160px] truncate">{g.message || '—'}</td>
-                  <td className="py-4 pr-4 font-sc text-xs text-ivory-300 whitespace-nowrap">
+                  <td className="py-4 pr-4 font-serif text-cream-100">{g.rsvp_guests ?? '—'}</td>
+                  <td className="py-4 pr-4 font-sc text-xs text-cream-200 max-w-[160px] truncate">{g.message || '—'}</td>
+                  <td className="py-4 pr-4 font-sc text-xs text-cream-200 whitespace-nowrap">
                     {g.submitted_at ? g.submitted_at.slice(0, 10) : '—'}
                   </td>
                   <td className="py-4">
@@ -237,7 +237,7 @@ export default function Admin() {
                       <button
                         onClick={() => copyLink(g.token, g.id)}
                         title="Պատճենել հղումը"
-                        className="font-sc text-xs tracking-widest px-3 py-2 border border-brass-600/60 text-brass-400 hover:bg-brass-500 hover:text-ivory-100 transition-all duration-300 whitespace-nowrap"
+                        className="font-sc text-xs tracking-widest px-3 py-2 border border-gold-400/60 text-gold-400 hover:bg-burgundy-600 hover:text-cream-50 transition-all duration-300 whitespace-nowrap"
                       >
                         {copied === g.id ? '✓' : 'Հղում'}
                       </button>
@@ -246,7 +246,7 @@ export default function Admin() {
                           onClick={() => sendEmail(g.id)}
                           disabled={sendingId === g.id}
                           title="Ուղարկել նամակ"
-                          className="font-sc text-xs tracking-widest px-3 py-2 border border-brass-600/60 text-brass-400 hover:bg-brass-500 hover:text-ivory-100 transition-all duration-300 disabled:opacity-30 whitespace-nowrap"
+                          className="font-sc text-xs tracking-widest px-3 py-2 border border-gold-400/60 text-gold-400 hover:bg-burgundy-600 hover:text-cream-50 transition-all duration-300 disabled:opacity-30 whitespace-nowrap"
                         >
                           {sendingId === g.id ? '...' : 'Նամակ'}
                         </button>
@@ -254,7 +254,7 @@ export default function Admin() {
                       <button
                         onClick={() => deleteGuest(g.id)}
                         title="Հեռացնել"
-                        className="font-sc text-xs px-2 py-2 text-ivory-200/20 hover:text-red-400 transition-colors"
+                        className="font-sc text-xs px-2 py-2 text-cream-200/20 hover:text-red-400 transition-colors"
                       >
                         ✕
                       </button>
@@ -264,7 +264,7 @@ export default function Admin() {
               ))}
               {guests.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="py-12 font-serif italic text-ivory-200/25 text-center">
+                  <td colSpan={7} className="py-12 font-serif italic text-cream-200/25 text-center">
                     Հյուրեր չկան դեռ
                   </td>
                 </tr>
